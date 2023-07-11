@@ -20,6 +20,7 @@ namespace MvcMovie.Controllers
         }
 
         // GET: Movies
+        [HttpPost]
         public async Task<IActionResult> Index(string movieGenre, string searchString)
         {
             if (_context.Movie == null)
@@ -172,12 +173,9 @@ namespace MvcMovie.Controllers
             {
                 return Problem("Entity set 'MvcMovieContext.Movie'  is null.");
             }
+
             var movie = await _context.Movie.FindAsync(id);
-            if (movie != null)
-            {
-                _context.Movie.Remove(movie);
-            }
-            
+            _context.Movie.Remove(movie);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
