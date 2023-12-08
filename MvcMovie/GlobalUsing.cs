@@ -4,3 +4,5 @@ global using Microsoft.EntityFrameworkCore;
 global using System.ComponentModel.DataAnnotations;
 global using MvcMovie.Models.Domian;
 global using MvcMovie.Models.DTO;
+global using MvcMovie.Repositories.Abstract;
+global using MvcMovie.Repositories.Implementation;
