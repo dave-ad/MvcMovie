@@ -8,4 +8,8 @@ public class DatabaseContext : IdentityDbContext<ApplicationUser>
     {
             
     }
+
+    public DbSet<Genre> Genre { get; set; }
+    public DbSet<Movie> Movie { get; set; }
+    public DbSet<MovieGenre> MovieGenre { get; set; }
 }
