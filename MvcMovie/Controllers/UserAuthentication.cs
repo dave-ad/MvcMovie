@@ -50,4 +50,12 @@ public class UserAuthentication : Controller
         }
         return View();
     }
+
+    public async Task<IActionResult> Logout()
+    {
+        await _userAuthenticationService.LogoutAsync();
+        return RedirectToAction(nameof(Login));
+    }
+
+
 }
