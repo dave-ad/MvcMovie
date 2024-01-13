@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "SYW7Z6SEGeY0YXlpCGf5b/upgrE1h42+E7zmUBmUc2I=",
+  "Hash": "RS3h9bgJ3LCUR/Y/fJIFd8cTeQxMXDPlOhpkfdtnqrs=",
   "Source": "MvcMovie",
   "BasePath": "_content/MvcMovie",
   "Mode": "Default",
@@ -53,6 +53,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\David\\source\\repos\\MovieStore\\MvcMovie\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\MvcMovie.bundle.scp.css"
+    },
+    {
+      "Identity": "C:\\Users\\David\\source\\repos\\MovieStore\\MvcMovie\\wwwroot\\css\\forms.css",
+      "SourceId": "MvcMovie",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\David\\source\\repos\\MovieStore\\MvcMovie\\wwwroot\\",
+      "BasePath": "_content/MvcMovie",
+      "RelativePath": "css/forms.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\forms.css"
     },
     {
       "Identity": "C:\\Users\\David\\source\\repos\\MovieStore\\MvcMovie\\wwwroot\\css\\site.css",
