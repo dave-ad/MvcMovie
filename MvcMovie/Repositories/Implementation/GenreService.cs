@@ -1,4 +1,5 @@
 ﻿
+using Microsoft.EntityFrameworkCore;
 using MvcMovie.Models.Domian;
 
 namespace MvcMovie.Repositories.Implementation
@@ -19,6 +20,7 @@ namespace MvcMovie.Repositories.Implementation
             try
             {
                 _databaseContext.Genre.Add(model);
+                _databaseContext.SaveChanges();
                 return true;
             }
             catch (Exception ex)
@@ -60,6 +62,7 @@ namespace MvcMovie.Repositories.Implementation
             try
             {
                 _databaseContext.Genre.Update(model);
+                _databaseContext.SaveChanges();
                 return true;
             }
             catch (Exception ex)
