@@ -38,6 +38,18 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/David/source/repos/MovieStore/MvcMovie/Views/Movie/Add.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW92aWVcQWRkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/David/source/repos/MovieStore/MvcMovie/Views/Movie/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW92aWVcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/David/source/repos/MovieStore/MvcMovie/Views/Movie/GenreList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW92aWVcR2VucmVMaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/David/source/repos/MovieStore/MvcMovie/Views/UserAuthentication/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlckF1dGhlbnRpY2F0aW9uXExvZ2luLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
