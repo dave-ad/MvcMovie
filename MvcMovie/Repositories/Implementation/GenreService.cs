@@ -1,74 +1,69 @@
-﻿
-using Microsoft.EntityFrameworkCore;
-using MvcMovie.Models.Domian;
+﻿namespace MvcMovie.Repositories.Implementation;
 
-namespace MvcMovie.Repositories.Implementation
+public class GenreService : IGenreService
 {
-    public class GenreService : IGenreService
+    private readonly DatabaseContext _databaseContext;
+
+    public GenreService(DatabaseContext databaseContext)
     {
-        private readonly DatabaseContext _databaseContext;
 
-        public GenreService(DatabaseContext databaseContext)
+        this._databaseContext = databaseContext;
+
+    }
+
+    public bool Add(Genre model)
+    {
+        try
         {
-
-            this._databaseContext = databaseContext;
-
+            _databaseContext.Genre.Add(model);
+            _databaseContext.SaveChanges();
+            return true;
         }
-
-        public bool Add(Genre model)
+        catch (Exception ex)
         {
-            try
-            {
-                _databaseContext.Genre.Add(model);
-                _databaseContext.SaveChanges();
-                return true;
-            }
-            catch (Exception ex)
-            {
+            return false;
+        }
+    }
+
+    public bool Delete(int id)
+    {
+        try
+        {
+            var data = this.GetById(id);
+            if (data == null)
                 return false;
-            }
+            _databaseContext.Genre.Remove(data);
+            _databaseContext.SaveChanges();
+            return true;
         }
-
-        public bool Delete(int id)
+        catch (Exception ex)
         {
-            try
-            {
-                var data = this.GetById(id);
-                if (data == null)
-                    return false;
-                _databaseContext.Genre.Remove(data);
-                _databaseContext.SaveChanges();
-                return true;
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
+            return false;
         }
+    }
 
-        public Genre GetById(int id)
+    public Genre GetById(int id)
+    {
+        return _databaseContext.Genre.Find(id);
+    }
+
+    public IQueryable<Genre> List()
+    {
+        var data = _databaseContext.Genre.AsQueryable();
+        return data;
+    }
+
+    public bool Update(Genre model)
+    {
+        try
         {
-            return _databaseContext.Genre.Find(id);
+            _databaseContext.Genre.Update(model);
+            _databaseContext.SaveChanges();
+            return true;
         }
-
-        public IQueryable<Genre> List()
+        catch (Exception ex)
         {
-            var data = _databaseContext.Genre.AsQueryable();
-            return data;
-        }
-
-        public bool Update(Genre model)
-        {
-            try
-            {
-                _databaseContext.Genre.Update(model);
-                _databaseContext.SaveChanges();
-                return true;
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
+            return false;
         }
     }
 }

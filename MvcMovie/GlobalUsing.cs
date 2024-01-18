@@ -6,3 +6,5 @@ global using MvcMovie.Models.Domian;
 global using MvcMovie.Models.DTO;
 global using MvcMovie.Repositories.Abstract;
 global using MvcMovie.Repositories.Implementation;
+global using Microsoft.AspNetCore.Mvc;
+global using Microsoft.AspNetCore.Mvc.Rendering;
