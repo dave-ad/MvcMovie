@@ -254,6 +254,13 @@ footer {
 }
 
 
+.delete-form {
+    display: inline; /* Adjust the form to be inline with the Edit link */
+    /*margin-left: 10px;*/ /* Add some margin for spacing */
+}
+
+
+
 /* Media queries */
 
 @media (max-width: 920px) {

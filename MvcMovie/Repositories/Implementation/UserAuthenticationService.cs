@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
-using MvcMovie.Repositories.Abstract;
-using System.Security.Claims;
+﻿using System.Security.Claims;
 
 namespace MvcMovie.Repositories.Implementation;
 
@@ -78,7 +76,7 @@ public class UserAuthenticationService : IUserAuthenticationService
             return status;
         }
 
-        var signInResult = await signInManager.PasswordSignInAsync(user, model.Password, false, true);
+        var signInResult = await signInManager.PasswordSignInAsync(user, model.Password, true, true);
         if (signInResult.Succeeded)
         {
             var userRoles = await userManager.GetRolesAsync(user);
