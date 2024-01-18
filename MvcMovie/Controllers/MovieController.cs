@@ -23,21 +23,20 @@
         }
 
         [HttpPost]
-        public IActionResult Add([Bind("MovieName")] Movie model)
+        public IActionResult Add(Movie model)
         {
-            model.GenreList = _genreService.List().Select(a => new SelectListItem { Text = a.GenreName, Value = a.Id.ToString() });
+            model.GenreList = _genreService.List().Select(a => new SelectListItem { Text = a.GenreName, Value = a.Id.ToString()});
             if (!ModelState.IsValid)
                 return View(model);
             var fileResult = this._fileService.SaveImage(model.ImageFile);
             if (fileResult.Item1 == 0)
             {
-                TempData["msg"] = "File COuld not save";
+                TempData["msg"] = "File Could not save";
+                //return View(model);
             }
             var imageName = fileResult.Item2;
             model.MovieImage = imageName;
             var result = _movieService.Add(model);
-            //TempData["msg"] = result? "Successfully Added": "Could not save...";
-
             if (result)
             {
                 TempData["msg"] = "Added Successfully";
@@ -84,7 +83,6 @@
         }
 
         [HttpPost]
-        //[Route("Delete/{id}")]
         public IActionResult Delete(int id)
         {
             var result = _movieService.Delete(id);

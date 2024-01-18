@@ -9,24 +9,23 @@ public class Movie
 
     [Required]
     public string? Title { get; set; }
-
     public string? ReleaseYear { get; set; }
 
     public string? MovieImage { get; set; } // stores movie image name with extentions (eg, image0001.jpg)
-
     [Required]
     public string? Cast { get; set; }
-
     [Required]
     public string? Director { get; set; }
 
     [NotMapped]
-    [Required]
+    //[Required]
     public IFormFile ImageFile { get; set; }
 
     [NotMapped]
     [Required]
     public List<int> Genres { get; set; }
-
+    [NotMapped]
     public IEnumerable<SelectListItem> GenreList;
+    [NotMapped]
+    public string? GenreNames { get; set; }
 }
