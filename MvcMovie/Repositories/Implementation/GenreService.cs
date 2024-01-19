@@ -3,12 +3,9 @@
 public class GenreService : IGenreService
 {
     private readonly DatabaseContext _databaseContext;
-
     public GenreService(DatabaseContext databaseContext)
     {
-
         this._databaseContext = databaseContext;
-
     }
 
     public bool Add(Genre model)
@@ -19,7 +16,7 @@ public class GenreService : IGenreService
             _databaseContext.SaveChanges();
             return true;
         }
-        catch (Exception ex)
+        catch (Exception)
         {
             return false;
         }
@@ -36,7 +33,7 @@ public class GenreService : IGenreService
             _databaseContext.SaveChanges();
             return true;
         }
-        catch (Exception ex)
+        catch (Exception)
         {
             return false;
         }
@@ -61,7 +58,7 @@ public class GenreService : IGenreService
             _databaseContext.SaveChanges();
             return true;
         }
-        catch (Exception ex)
+        catch (Exception)
         {
             return false;
         }

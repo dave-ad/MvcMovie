@@ -1,85 +1,82 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+﻿namespace MvcMovie.Controllers;
 
-namespace MvcMovie.Controllers
+//[Authorize(Roles ="admin")]
+//[Authorize]
+public class GenreController : Controller
 {
-    //[Authorize(Roles ="admin")]
-    public class GenreController : Controller
+    private readonly IGenreService _genreService;
+
+    public GenreController(IGenreService genreService)
     {
-        private readonly IGenreService _genreService;
 
-        public GenreController(IGenreService genreService)
+        this._genreService = genreService;
+
+    }
+
+    public IActionResult Add()
+    {
+        return View();
+    }
+
+    [HttpPost]
+    public IActionResult Add([Bind("GenreName")] Genre model)
+    {
+        if (!ModelState.IsValid)
+            return View(model);
+
+        var result = _genreService.Add(model);
+        //TempData["msg"] = result? "Successfully Added": "Could not save...";
+
+        if (result)
         {
-
-            this._genreService = genreService;
-
+            TempData["msg"] = "Added Successfully";
+            return RedirectToAction(nameof(Add));
         }
-
-        public IActionResult Add()
+        else
         {
-            return View();
+            TempData["msg"] = "Error on server side";
+            return View(model);
         }
+    }
 
-        [HttpPost]
-        public IActionResult Add([Bind("GenreName")] Genre model)
+    public IActionResult Edit(int id)
+    {
+        var data = _genreService.GetById(id);
+        return View(data);
+    }
+
+    [HttpPost]
+    public IActionResult Update(Genre model)
+    {
+        if (!ModelState.IsValid)
+            return View(model);
+
+        var result = _genreService.Update(model);
+
+        if (result)
         {
-            if (!ModelState.IsValid)
-                return View(model);
-
-            var result = _genreService.Add(model);
-            //TempData["msg"] = result? "Successfully Added": "Could not save...";
-
-            if (result)
-            {
-                TempData["msg"] = "Added Successfully";
-                return RedirectToAction(nameof(Add));
-            }
-            else
-            {
-                TempData["msg"] = "Error on server side";
-                return View(model);
-            }
+            TempData["msg"] = "Update Successful";
+            return RedirectToAction(nameof(Edit), new { id = model.Id });
+            //return RedirectToAction(nameof(GenreList));
         }
-
-        public IActionResult Edit(int id)
+        else
         {
-            var data = _genreService.GetById(id);
-            return View(data);
+            TempData["msg"] = "Error on server side";
+            return View(model);
         }
+    }
 
-        [HttpPost]
-        public IActionResult Update(Genre model)
-        {
-            if (!ModelState.IsValid)
-                return View(model);
+    public IActionResult GenreList()
+    {
+        var data = this._genreService.List().ToList();
+        return View(data);
+    }
 
-            var result = _genreService.Update(model);
-
-            if (result)
-            {
-                TempData["msg"] = "Update Successful";
-                return RedirectToAction(nameof(Edit), new { id = model.Id });
-                //return RedirectToAction(nameof(GenreList));
-            }
-            else
-            {
-                TempData["msg"] = "Error on server side";
-                return View(model);
-            }
-        }
-
-        public IActionResult GenreList()
-        {
-            var data = this._genreService.List().ToList();
-            return View(data);
-        }
-
-        [HttpPost]
-        //[Route("Delete/{id}")]
-        public IActionResult Delete(int id)
-        {
-            var result = _genreService.Delete(id);
-            return RedirectToAction(nameof(GenreList));
-        }
+    [HttpPost]
+    //[Route("Delete/{id}")]
+    public IActionResult Delete(int id)
+    {
+        var result = _genreService.Delete(id);
+        return RedirectToAction(nameof(GenreList));
     }
 }

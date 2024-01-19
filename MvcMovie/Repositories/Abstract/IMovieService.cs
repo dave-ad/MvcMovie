@@ -1,15 +1,9 @@
-﻿namespace MvcMovie.Repositories.Abstract
+﻿namespace MvcMovie.Repositories.Abstract;
+public interface IMovieService
 {
-    public interface IMovieService
-    {
-        bool Add(Movie model);
-
-        bool Update(Movie model);
-
-        Movie GetById(int id);
-
-        bool Delete(int id);
-
-        MovieListModel List();
-    }
+    bool Add(Movie model);
+    bool Update(Movie model);
+    Movie GetById(int id);
+    bool Delete(int id);
+    MovieListModel List();
 }

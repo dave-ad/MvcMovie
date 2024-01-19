@@ -10,7 +10,7 @@ public class Movie
     [Required]
     public string? Title { get; set; }
     public string? ReleaseYear { get; set; }
-
+    [Required]
     public string? MovieImage { get; set; } // stores movie image name with extentions (eg, image0001.jpg)
     [Required]
     public string? Cast { get; set; }
@@ -18,7 +18,6 @@ public class Movie
     public string? Director { get; set; }
 
     [NotMapped]
-    //[Required]
     public IFormFile ImageFile { get; set; }
 
     [NotMapped]
