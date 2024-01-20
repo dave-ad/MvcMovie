@@ -37,6 +37,11 @@ public class MovieService : IMovieService
             var data = this.GetById(id);
             if (data == null)
                 return false;
+            var movieGenres = _databaseContext.MovieGenre.Where(x => x.MovieId == data.Id);
+            foreach (var movieGenre in movieGenres)
+            {
+                _databaseContext.MovieGenre.Remove(movieGenre);
+            }
             _databaseContext.Movie.Remove(data);
             _databaseContext.SaveChanges();
             return true;
@@ -84,5 +89,11 @@ public class MovieService : IMovieService
         {
             return false;
         }
+    }
+
+    public List<int> GetGenreByMovieId(int movieId)
+    {
+        var genreIds = _databaseContext.MovieGenre.Where(x => x.MovieId == movieId).Select(y => y.GenreId).ToList();
+        return genreIds;
     }
 }

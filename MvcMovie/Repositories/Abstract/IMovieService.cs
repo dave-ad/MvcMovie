@@ -6,4 +6,5 @@ public interface IMovieService
     Movie GetById(int id);
     bool Delete(int id);
     MovieListModel List();
+    List<int> GetGenreByMovieId(int movieId);
 }

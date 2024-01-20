@@ -18,8 +18,7 @@ public class Movie
     public string? Director { get; set; }
 
     [NotMapped]
-    [Required]
-    public IFormFile ImageFile { get; set; }
+    public IFormFile? ImageFile { get; set; }
 
     [NotMapped]
     [Required]
@@ -28,4 +27,7 @@ public class Movie
     public IEnumerable<SelectListItem>? GenreList { get; set; }
     [NotMapped]
     public string? GenreNames { get; set; }
+    
+    [NotMapped]
+    public MultiSelectList? MultiGenreList { get; set; }
 }
