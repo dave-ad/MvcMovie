@@ -1,42 +1,54 @@
-﻿namespace MvcMovie.Controllers
+﻿namespace MvcMovie.Controllers;
+//[Authorize]
+public class MovieController : Controller
 {
-    public class MovieController : Controller
+    private readonly IMovieService _movieService;
+    private readonly IFileService _fileService;
+    private readonly IGenreService _genreService;
+    public MovieController(IMovieService movieService, IFileService fileService, IGenreService genreService)
     {
-        private readonly IMovieService _movieService;
-        private readonly IFileService _fileService;
-        private readonly IGenreService _genreService;
+        _movieService = movieService;
+        _fileService = fileService;
+        _genreService = genreService;
 
+    }
 
-        public MovieController(IMovieService movieService, IFileService fileService, IGenreService genreService)
+    public IActionResult Add()
+    {
+        var model = new Movie();
+        model.GenreList = _genreService.List().Select(a => new SelectListItem {Text = a.GenreName, Value = a.Id.ToString()});
+        return View(model);
+    }
+
+    [HttpPost]
+    public IActionResult Add(Movie model)
+    {
+        model.GenreList = _genreService.List().Select(a => new SelectListItem { Text = a.GenreName, Value = a.Id.ToString()});
+        try
         {
-            _movieService = movieService;
-            _fileService = fileService;
-            _genreService = genreService;
-
-        }
-
-        public IActionResult Add()
-        {
-            var model = new Movie();
-            model.GenreList = _genreService.List().Select(a => new SelectListItem {Text = a.GenreName, Value = a.Id.ToString()});
-            return View(model);
-        }
-
-        [HttpPost]
-        public IActionResult Add([Bind("MovieName")] Movie model)
-        {
-            model.GenreList = _genreService.List().Select(a => new SelectListItem { Text = a.GenreName, Value = a.Id.ToString() });
             if (!ModelState.IsValid)
-                return View(model);
-            var fileResult = this._fileService.SaveImage(model.ImageFile);
-            if (fileResult.Item1 == 0)
             {
-                TempData["msg"] = "File COuld not save";
+                foreach (var error in ModelState.Values.SelectMany(v => v.Errors))
+                {
+                    TempData["msg"] += $"{error.ErrorMessage} ";
+                }
+                return View(model);
             }
-            var imageName = fileResult.Item2;
-            model.MovieImage = imageName;
+
+            if (model.ImageFile != null)
+            {
+                var fileResult = this._fileService.SaveImage(model.ImageFile);
+                if (fileResult.Item1 == 0)
+                {
+                    TempData["msg"] = "File Could not save";
+                    return View(model);
+                }
+
+                var imageName = fileResult.Item2;
+                model.MovieImage = imageName;
+            }
+
             var result = _movieService.Add(model);
-            //TempData["msg"] = result? "Successfully Added": "Could not save...";
 
             if (result)
             {
@@ -49,46 +61,67 @@
                 return View(model);
             }
         }
-
-        public IActionResult Edit(int id)
+        catch (Exception ex)
         {
-            var data = _movieService.GetById(id);
-            return View(data);
+            TempData["msg"] = $"Error on server side: {ex.Message}";
+            return View(model);
         }
+    }
 
-        [HttpPost]
-        public IActionResult Update(Movie model)
+    public IActionResult Edit(int id)
+    {
+        var model = _movieService.GetById(id);
+        var selectedGenres = _movieService.GetGenreByMovieId(model.Id);
+        MultiSelectList multiGenreList = new MultiSelectList(_genreService.List(), "Id", "GenreName", selectedGenres);
+        model.MultiGenreList = multiGenreList;
+        return View(model);
+    }
+
+    [HttpPost]
+    public IActionResult Edit(Movie model)
+    {
+        var selectedGenres = _movieService.GetGenreByMovieId(model.Id);
+        MultiSelectList multiGenreList = new MultiSelectList(_genreService.List(), "Id", "GenreName", selectedGenres);
+        model.MultiGenreList = multiGenreList;
+        if (!ModelState.IsValid)
+            return View(model);
+        if (model.ImageFile != null)
         {
-            if (!ModelState.IsValid)
-                return View(model);
-
-            var result = _movieService.Update(model);
-
-            if (result)
+            var fileResult = this._fileService.SaveImage(model.ImageFile);
+            if (fileResult.Item1 == 0)
             {
-                TempData["msg"] = "Update Successful";
-                return RedirectToAction(nameof(Edit), new { id = model.Id });
-                //return RedirectToAction(nameof(MovieList));
-            }
-            else
-            {
-                TempData["msg"] = "Error on server side";
+                TempData["msg"] = "File Could not save";
                 return View(model);
             }
-        }
 
-        public IActionResult MovieList()
-        {
-            var data = this._movieService.List();
-            return View(data);
+            var imageName = fileResult.Item2;
+            model.MovieImage = imageName;
         }
+        var result = _movieService.Update(model);
+        if (result)
+        {
+            TempData["msg"] = "Update Successful";
+            return RedirectToAction(nameof(Edit), new { id = model.Id });
+            //return RedirectToAction(nameof(MovieList));
+        }
+        else
+        {
+            TempData["msg"] = "Error on server side";
+            return View(model);
+        }
+    }
 
-        [HttpPost]
-        //[Route("Delete/{id}")]
-        public IActionResult Delete(int id)
-        {
-            var result = _movieService.Delete(id);
-            return RedirectToAction(nameof(MovieList));
-        }
+    public IActionResult MovieList()
+    {
+        var data = this._movieService.List();
+        return View(data);
+        //return Ok(data);
+    }
+
+    [HttpPost]
+    public IActionResult Delete(int id)
+    {
+        var result = _movieService.Delete(id);
+        return RedirectToAction(nameof(MovieList));
     }
 }

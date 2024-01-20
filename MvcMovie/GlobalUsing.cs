@@ -1,10 +1,11 @@
-﻿global using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿global using Microsoft.AspNetCore.Authorization;
+global using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 global using Microsoft.AspNetCore.Identity;
+global using Microsoft.AspNetCore.Mvc;
+global using Microsoft.AspNetCore.Mvc.Rendering;
 global using Microsoft.EntityFrameworkCore;
-global using System.ComponentModel.DataAnnotations;
 global using MvcMovie.Models.Domian;
 global using MvcMovie.Models.DTO;
 global using MvcMovie.Repositories.Abstract;
 global using MvcMovie.Repositories.Implementation;
-global using Microsoft.AspNetCore.Mvc;
-global using Microsoft.AspNetCore.Mvc.Rendering;
+global using System.ComponentModel.DataAnnotations;

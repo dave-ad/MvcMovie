@@ -3,7 +3,6 @@
 public class FileService : IFileService
 {
     private readonly IWebHostEnvironment environment;
-
     public FileService(IWebHostEnvironment env)
     {
         this.environment = env;
@@ -37,7 +36,7 @@ public class FileService : IFileService
             stream.Close();
             return new Tuple<int, string>(1, newFileName);
         }
-        catch (Exception ex)
+        catch (Exception)
         {
             return new Tuple<int, string>(0, "Error has occured");
         }
@@ -56,7 +55,7 @@ public class FileService : IFileService
             }
             return false;
         }
-        catch (Exception ex)
+        catch (Exception)
         {
             return false;
         }

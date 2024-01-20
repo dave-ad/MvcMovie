@@ -1,85 +1,99 @@
-﻿using MvcMovie.Models.Domian;
-
-namespace MvcMovie.Repositories.Implementation
+﻿namespace MvcMovie.Repositories.Implementation;
+public class MovieService : IMovieService
 {
-    public class MovieService : IMovieService
+    private readonly DatabaseContext _databaseContext;
+    public MovieService(DatabaseContext databaseContext)
     {
-        private readonly DatabaseContext _databaseContext;
-
-        public MovieService(DatabaseContext databaseContext)
+        this._databaseContext = databaseContext;
+    }
+    public bool Add(Movie model)
+    {
+        try
         {
-
-            this._databaseContext = databaseContext;
-
-        }
-        public bool Add(Movie model)
-        {
-            try
+            _databaseContext.Movie.Add(model);
+            _databaseContext.SaveChanges();
+            foreach (var genreId in model.Genres)
             {
-                _databaseContext.Movie.Add(model);
-                _databaseContext.SaveChanges();
-                foreach (var genreId in model.Genres)
+                var movieGenre = new MovieGenre
                 {
-                    var movieGenre = new MovieGenre
-                    {
-                        MovieId = model.Id,
-                        GenreId = genreId
-                    };
-                    _databaseContext.MovieGenre.Add(movieGenre);
-                }
-                _databaseContext.SaveChanges();
-                return true;
+                    MovieId = model.Id,
+                    GenreId = genreId
+                };
+                _databaseContext.MovieGenre.Add(movieGenre);
             }
-            catch (Exception ex)
-            {
+            _databaseContext.SaveChanges();
+            return true;
+        }
+        catch (Exception ex)
+        {
+            return false;
+        }
+    }
+
+    public bool Delete(int id)
+    {
+        try
+        {
+            var data = this.GetById(id);
+            if (data == null)
                 return false;
+            var movieGenres = _databaseContext.MovieGenre.Where(x => x.MovieId == data.Id);
+            foreach (var movieGenre in movieGenres)
+            {
+                _databaseContext.MovieGenre.Remove(movieGenre);
             }
+            _databaseContext.Movie.Remove(data);
+            _databaseContext.SaveChanges();
+            return true;
         }
-
-        public bool Delete(int id)
+        catch (Exception ex)
         {
-            try
-            {
-                var data = this.GetById(id);
-                if (data == null)
-                    return false;
-                _databaseContext.Movie.Remove(data);
-                _databaseContext.SaveChanges();
-                return true;
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
+            return false;
         }
+    }
 
-        public Movie GetById(int id)
-        {
-            return _databaseContext.Movie.Find(id);
-        }
+    public Movie GetById(int id)
+    {
+        return _databaseContext.Movie.Find(id);
+    }
 
-        public MovieListModel List()
+    public MovieListModel List()
+    {
+        var list = _databaseContext.Movie.ToList();
+        foreach(var movie in list)
         {
-            var list = _databaseContext.Movie.AsQueryable();
-            var data = new MovieListModel
-            {
-                MovieList = list
-            };
-            return data;
+            var genres = (from genre in _databaseContext.Genre 
+                          join mg in _databaseContext.MovieGenre
+                          on genre.Id equals mg.GenreId
+                          where mg.MovieId == movie.Id
+                          select genre.GenreName).ToList();
+            var genreNames = string.Join(',', genres);
+            movie.GenreNames = genreNames;
         }
+        var data = new MovieListModel
+        {
+            MovieList = list.AsQueryable()
+        };
+        return data;
+    }
 
-        public bool Update(Movie model)
+    public bool Update(Movie model)
+    {
+        try
         {
-            try
-            {
-                _databaseContext.Movie.Update(model);
-                _databaseContext.SaveChanges();
-                return true;
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
+            _databaseContext.Movie.Update(model);
+            _databaseContext.SaveChanges();
+            return true;
         }
+        catch (Exception ex)
+        {
+            return false;
+        }
+    }
+
+    public List<int> GetGenreByMovieId(int movieId)
+    {
+        var genreIds = _databaseContext.MovieGenre.Where(x => x.MovieId == movieId).Select(y => y.GenreId).ToList();
+        return genreIds;
     }
 }
