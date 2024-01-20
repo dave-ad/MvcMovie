@@ -1,5 +1,5 @@
 ﻿namespace MvcMovie.Controllers;
-[Authorize]
+//[Authorize]
 public class MovieController : Controller
 {
     private readonly IMovieService _movieService;
@@ -24,25 +24,44 @@ public class MovieController : Controller
     public IActionResult Add(Movie model)
     {
         model.GenreList = _genreService.List().Select(a => new SelectListItem { Text = a.GenreName, Value = a.Id.ToString()});
-        if (!ModelState.IsValid)
-            return View(model);
-        var fileResult = this._fileService.SaveImage(model.ImageFile);
-        if (fileResult.Item1 == 0)
+
+        try
         {
-            TempData["msg"] = "File Could not save";
-            //return View(model);
+            if (!ModelState.IsValid)
+            {
+                foreach (var error in ModelState.Values.SelectMany(v => v.Errors))
+                {
+                    TempData["msg"] += $"{error.ErrorMessage} ";
+                }
+                return View(model);
+            }
+
+            var fileResult = this._fileService.SaveImage(model.ImageFile);
+            if (fileResult.Item1 == 0)
+            {
+                TempData["msg"] = "File Could not save";
+                return View(model);
+            }
+
+            var imageName = fileResult.Item2;
+            model.MovieImage = imageName;
+
+            var result = _movieService.Add(model);
+
+            if (result)
+            {
+                TempData["msg"] = "Added Successfully";
+                return RedirectToAction(nameof(Add));
+            }
+            else
+            {
+                TempData["msg"] = "Error on server side";
+                return View(model);
+            }
         }
-        var imageName = fileResult.Item2;
-        model.MovieImage = imageName;
-        var result = _movieService.Add(model);
-        if (result)
+        catch (Exception ex)
         {
-            TempData["msg"] = "Added Successfully";
-            return RedirectToAction(nameof(Add));
-        }
-        else
-        {
-            TempData["msg"] = "Error on server side";
+            TempData["msg"] = $"Error on server side: {ex.Message}";
             return View(model);
         }
     }
@@ -78,6 +97,7 @@ public class MovieController : Controller
     {
         var data = this._movieService.List();
         return View(data);
+        //return Ok(data);
     }
 
     [HttpPost]

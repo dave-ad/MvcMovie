@@ -24,7 +24,7 @@ public class MovieService : IMovieService
             _databaseContext.SaveChanges();
             return true;
         }
-        catch (Exception)
+        catch (Exception ex)
         {
             return false;
         }
@@ -54,10 +54,20 @@ public class MovieService : IMovieService
 
     public MovieListModel List()
     {
-        var list = _databaseContext.Movie.AsQueryable();
+        var list = _databaseContext.Movie.ToList();
+        foreach(var movie in list)
+        {
+            var genres = (from genre in _databaseContext.Genre 
+                          join mg in _databaseContext.MovieGenre
+                          on genre.Id equals mg.GenreId
+                          where mg.MovieId == movie.Id
+                          select genre.GenreName).ToList();
+            var genreNames = string.Join(',', genres);
+            movie.GenreNames = genreNames;
+        }
         var data = new MovieListModel
         {
-            MovieList = list
+            MovieList = list.AsQueryable()
         };
         return data;
     }
