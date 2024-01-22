@@ -1,7 +1,7 @@
 ﻿namespace MvcMovie.Controllers;
 
 //[Authorize(Roles ="admin")]
-//[Authorize]
+[Authorize]
 public class GenreController : Controller
 {
     private readonly IGenreService _genreService;
@@ -73,7 +73,6 @@ public class GenreController : Controller
     }
 
     [HttpPost]
-    //[Route("Delete/{id}")]
     public IActionResult Delete(int id)
     {
         var result = _genreService.Delete(id);

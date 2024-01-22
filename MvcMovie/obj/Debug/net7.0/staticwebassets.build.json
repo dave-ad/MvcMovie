@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "y5aZHmjXXd10i44JakHF86+jdgVkhksxjwF8cCZvtPU=",
+  "Hash": "BPGUKJevJqV/NEYdp5KYTm65DEPYAr4uPYBh0MSPciA=",
   "Source": "MvcMovie",
   "BasePath": "_content/MvcMovie",
   "Mode": "Default",
@@ -226,6 +226,25 @@
       "OriginalItemSpec": "wwwroot\\Uploads\\3c817345-80ab-49d8-ae4a-9faec3e1ffe9.jpeg"
     },
     {
+      "Identity": "C:\\Users\\David\\source\\repos\\MovieStore\\MvcMovie\\wwwroot\\Uploads\\4e63d223-d297-4636-9312-e41f1af01345.jpg",
+      "SourceId": "MvcMovie",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\David\\source\\repos\\MovieStore\\MvcMovie\\wwwroot\\",
+      "BasePath": "_content/MvcMovie",
+      "RelativePath": "Uploads/4e63d223-d297-4636-9312-e41f1af01345.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Uploads\\4e63d223-d297-4636-9312-e41f1af01345.jpg"
+    },
+    {
       "Identity": "C:\\Users\\David\\source\\repos\\MovieStore\\MvcMovie\\wwwroot\\Uploads\\563c095c-b30e-437f-99b9-509d9e6d591c.jpeg",
       "SourceId": "MvcMovie",
       "SourceType": "Discovered",
@@ -243,6 +262,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Uploads\\563c095c-b30e-437f-99b9-509d9e6d591c.jpeg"
+    },
+    {
+      "Identity": "C:\\Users\\David\\source\\repos\\MovieStore\\MvcMovie\\wwwroot\\Uploads\\59ee95d4-a465-4455-9ae4-a7b308ced1df.jpg",
+      "SourceId": "MvcMovie",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\David\\source\\repos\\MovieStore\\MvcMovie\\wwwroot\\",
+      "BasePath": "_content/MvcMovie",
+      "RelativePath": "Uploads/59ee95d4-a465-4455-9ae4-a7b308ced1df.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Uploads\\59ee95d4-a465-4455-9ae4-a7b308ced1df.jpg"
     },
     {
       "Identity": "C:\\Users\\David\\source\\repos\\MovieStore\\MvcMovie\\wwwroot\\Uploads\\5c810ed7-5c21-44ed-9b4d-7d53e089cbf6.jpeg",

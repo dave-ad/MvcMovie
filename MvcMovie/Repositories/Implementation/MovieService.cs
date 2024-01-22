@@ -81,11 +81,29 @@ public class MovieService : IMovieService
     {
         try
         {
+            // These genreIds are not selected by the user and is still present in the movieGenre table corresponding to this movieId.
+            // So these Ids should be removed.
+            var genresToDelete = _databaseContext.MovieGenre.Where(x => x.MovieId == model.Id && !model.Genres.Contains(x.GenreId)).ToList();
+            foreach (var movGenre in genresToDelete)
+            {
+                //var genre = _databaseContext.MovieGenre.Find(genreId);
+                _databaseContext.MovieGenre.Remove(movGenre);
+            }
+            foreach (int genId in model.Genres)
+            {
+                var movieGenre = _databaseContext.MovieGenre.FirstOrDefault(x => x.MovieId == model.Id && x.GenreId == genId);
+                if (movieGenre == null)
+                {
+                    movieGenre = new MovieGenre { GenreId = genId, MovieId = model.Id };
+                    _databaseContext.MovieGenre.Add(movieGenre);
+                }
+            }
             _databaseContext.Movie.Update(model);
+            // We have to add these genre ids in the movieGenre table
             _databaseContext.SaveChanges();
             return true;
         }
-        catch (Exception ex)
+        catch (Exception)
         {
             return false;
         }

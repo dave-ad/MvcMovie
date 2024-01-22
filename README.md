@@ -17,6 +17,4 @@ Etc.
  :tv: Video tutorial on this same topic
  Url : https://youtu.be/zQ5eijfpuu8
  
- <a href="http://www.youtube.com/watch?feature=player_embedded&v=zQ5eijfpuu8
-" target="_blank"><img src="http://img.youtube.com/vi/zQ5eijfpuu8/0.jpg" 
-alt="Video demonstrating creation of an expense tracker application from scratch" width="500" height="400" border="10" /></a>
+ <a href="https://www.youtube.com/watch?v=cQ3HH0MJqDs&pp=ygU7TW92aWUgc3RvcmUgcHJvamVjdCBpbiBkb3QgbmV0IDYgbXZjIHwgZG90IG5ldCBjb3JlIHByb2plY3Q%3D" target="_blank"><img src="http://img.youtube.com/vi/zQ5eijfpuu8/0.jpg" alt="Video demonstrating creation of an expense tracker application from scratch" width="500" height="400" border="10" /></a>

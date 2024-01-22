@@ -27,7 +27,6 @@
             <li><a href="/Home/About">About</a></li>
             @if (!string.IsNullOrEmpty(username))
             {
-            }
                 <li>
                     <a href="#">Admin <i class="fa fa-caret-down"></i></a>
 
@@ -37,6 +36,7 @@
                         <li><a href="/UserAuthentication/Logout">Logout</a></li>
                     </ul>
                 </li>
+            }
 
             @if (string.IsNullOrEmpty(username))
             {
