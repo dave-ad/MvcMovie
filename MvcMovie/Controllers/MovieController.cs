@@ -1,5 +1,6 @@
 ﻿namespace MvcMovie.Controllers;
-//[Authorize]
+
+[Authorize]
 public class MovieController : Controller
 {
     private readonly IMovieService _movieService;
