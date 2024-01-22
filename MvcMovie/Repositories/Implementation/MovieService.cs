@@ -57,10 +57,27 @@ public class MovieService : IMovieService
         return _databaseContext.Movie.Find(id);
     }
 
-    public MovieListModel List()
+    public MovieListModel List(string term="", bool paging = false, int currentPage = 0)
     {
+        var data = new MovieListModel();
         var list = _databaseContext.Movie.ToList();
-        foreach(var movie in list)
+        if (!string.IsNullOrEmpty(term))
+        {
+            term = term.ToLower();
+            list = list.Where(x => x.Title.ToLower().StartsWith(term)).ToList();
+        }
+        if (paging)
+        {
+            // Apply Paging
+            int pageSize = 5;
+            int count = list.Count;
+            int totalPages = (int)Math.Ceiling(count / (double) pageSize);
+            list = list.Skip((currentPage - 1) * pageSize).Take(pageSize).ToList();
+            data.PageSize = pageSize;
+            data.CurrentPage = currentPage;
+            data.TotalPages = totalPages;
+        }
+        foreach (var movie in list)
         {
             var genres = (from genre in _databaseContext.Genre 
                           join mg in _databaseContext.MovieGenre
@@ -70,10 +87,7 @@ public class MovieService : IMovieService
             var genreNames = string.Join(',', genres);
             movie.GenreNames = genreNames;
         }
-        var data = new MovieListModel
-        {
-            MovieList = list.AsQueryable()
-        };
+        data.MovieList = list.AsQueryable();
         return data;
     }
 
