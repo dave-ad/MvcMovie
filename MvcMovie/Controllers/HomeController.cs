@@ -8,9 +8,10 @@ public class HomeController : Controller
     {
             _movieService = movieService;
     }
-    public IActionResult Index(string )
+
+    public IActionResult Index(string term="", int currentPage = 1)
     {
-        var movies = _movieService.List();
+        var movies = _movieService.List(term, true, currentPage);
         return View(movies);
     }
     
