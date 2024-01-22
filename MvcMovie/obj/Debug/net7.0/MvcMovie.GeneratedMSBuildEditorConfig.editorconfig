@@ -9,59 +9,63 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = MvcMovie
 build_property.RootNamespace = MvcMovie
-build_property.ProjectDir = C:\Users\David\source\repos\MovieStore\MvcMovie\
+build_property.ProjectDir = C:\Users\David\source\repos\MvcMovie\MvcMovie\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\David\source\repos\MovieStore\MvcMovie
+build_property.MSBuildProjectDirectory = C:\Users\David\source\repos\MvcMovie\MvcMovie
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/David/source/repos/MovieStore/MvcMovie/Views/Genre/Add.cshtml]
+[C:/Users/David/source/repos/MvcMovie/MvcMovie/Views/Genre/Add.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VucmVcQWRkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/David/source/repos/MovieStore/MvcMovie/Views/Genre/Edit.cshtml]
+[C:/Users/David/source/repos/MvcMovie/MvcMovie/Views/Genre/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VucmVcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/David/source/repos/MovieStore/MvcMovie/Views/Genre/GenreList.cshtml]
+[C:/Users/David/source/repos/MvcMovie/MvcMovie/Views/Genre/GenreList.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VucmVcR2VucmVMaXN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/David/source/repos/MovieStore/MvcMovie/Views/Home/About.cshtml]
+[C:/Users/David/source/repos/MvcMovie/MvcMovie/Views/Home/About.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBYm91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/David/source/repos/MovieStore/MvcMovie/Views/Home/Index.cshtml]
+[C:/Users/David/source/repos/MvcMovie/MvcMovie/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/David/source/repos/MovieStore/MvcMovie/Views/Movie/Add.cshtml]
+[C:/Users/David/source/repos/MvcMovie/MvcMovie/Views/Home/MovieDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxNb3ZpZURldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/David/source/repos/MvcMovie/MvcMovie/Views/Movie/Add.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW92aWVcQWRkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/David/source/repos/MovieStore/MvcMovie/Views/Movie/Edit.cshtml]
+[C:/Users/David/source/repos/MvcMovie/MvcMovie/Views/Movie/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW92aWVcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/David/source/repos/MovieStore/MvcMovie/Views/Movie/MovieList.cshtml]
+[C:/Users/David/source/repos/MvcMovie/MvcMovie/Views/Movie/MovieList.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW92aWVcTW92aWVMaXN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/David/source/repos/MovieStore/MvcMovie/Views/UserAuthentication/Login.cshtml]
+[C:/Users/David/source/repos/MvcMovie/MvcMovie/Views/UserAuthentication/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlckF1dGhlbnRpY2F0aW9uXExvZ2luLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/David/source/repos/MovieStore/MvcMovie/Views/_ViewImports.cshtml]
+[C:/Users/David/source/repos/MvcMovie/MvcMovie/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/David/source/repos/MovieStore/MvcMovie/Views/_ViewStart.cshtml]
+[C:/Users/David/source/repos/MvcMovie/MvcMovie/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/David/source/repos/MovieStore/MvcMovie/Views/Shared/_Layout.cshtml]
+[C:/Users/David/source/repos/MvcMovie/MvcMovie/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-0uvum7rpp4

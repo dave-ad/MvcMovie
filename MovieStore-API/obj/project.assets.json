@@ -433,11 +433,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\David\\source\\repos\\MovieStore\\MovieStore-API\\MovieStore-API.csproj",
+      "projectUniqueName": "C:\\Users\\David\\source\\repos\\MvcMovie\\MovieStore-API\\MovieStore-API.csproj",
       "projectName": "MovieStore-API",
-      "projectPath": "C:\\Users\\David\\source\\repos\\MovieStore\\MovieStore-API\\MovieStore-API.csproj",
+      "projectPath": "C:\\Users\\David\\source\\repos\\MvcMovie\\MovieStore-API\\MovieStore-API.csproj",
       "packagesPath": "C:\\Users\\David\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\David\\source\\repos\\MovieStore\\MovieStore-API\\obj\\",
+      "outputPath": "C:\\Users\\David\\source\\repos\\MvcMovie\\MovieStore-API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\David\\AppData\\Roaming\\NuGet\\NuGet.Config",
