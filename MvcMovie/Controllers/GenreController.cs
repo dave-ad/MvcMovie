@@ -1,7 +1,9 @@
 ﻿namespace MvcMovie.Controllers;
 
 //[Authorize(Roles ="admin")]
-[Authorize]
+//[Authorize]
+[ApiController]
+[Route("api/[controller]")]
 public class GenreController : Controller
 {
     private readonly IGenreService _genreService;

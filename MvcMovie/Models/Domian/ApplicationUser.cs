@@ -1,10 +1,6 @@
-﻿using Microsoft.AspNetCore.Identity;
-using System.Data.Common;
+﻿namespace MvcMovie.Models.Domian;
 
-namespace MvcMovie.Models.Domian
+public class ApplicationUser : IdentityUser
 {
-    public class ApplicationUser : IdentityUser
-    {
-        public string Name { get; set; }
-    }
+    public string Name { get; set; }
 }

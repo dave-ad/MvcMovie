@@ -1,8 +1,7 @@
-﻿namespace MvcMovie.Models.DTO
+﻿namespace MvcMovie.Models.DTO;
+
+public class Status
 {
-    public class Status
-    {
-        public int StatusCode { get; set; }
-        public string? Message { get; set; }
-    }
+    public int StatusCode { get; set; }
+    public string? Message { get; set; }
 }

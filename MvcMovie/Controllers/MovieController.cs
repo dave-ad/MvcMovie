@@ -1,6 +1,6 @@
 ﻿namespace MvcMovie.Controllers;
 
-[Authorize]
+//[Authorize]
 public class MovieController : Controller
 {
     private readonly IMovieService _movieService;
@@ -24,7 +24,7 @@ public class MovieController : Controller
     [HttpPost]
     public IActionResult Add(Movie model)
     {
-        model.GenreList = _genreService.List().Select(a => new SelectListItem { Text = a.GenreName, Value = a.Id.ToString()});
+        model.GenreList = _genreService.List().Select(a => new SelectListItem {Text = a.GenreName, Value = a.Id.ToString()});
         try
         {
             if (!ModelState.IsValid)
@@ -119,7 +119,7 @@ public class MovieController : Controller
         //return Ok(data);
     }
 
-    [HttpPost]
+    [HttpDelete]
     public IActionResult Delete(int id)
     {
         var result = _movieService.Delete(id);
