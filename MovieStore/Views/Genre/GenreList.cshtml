@@ -1,0 +1,49 @@
+﻿@model IEnumerable<MovieStore.Models.Domian.Genre>
+@{
+}
+
+<div class="tbl-container">
+    <h2>Genres</h2>
+    <div class="add-link">
+        <a href="/Genre/Add" class="btn btn-sec">Add</a>
+    </div>
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.GenreName</td>
+                <td>
+                    <a href="/Genre/Edit?id=@item.Id" class="btn btn-default"><i class="fa fa-edit"></i></a>
+                    @* <a onclick="return window.confirm('Are you sure?')" type="submit" href="/Genre/Delete?id=@item.Id" class="btn btn-danger"><i class="fa fa-trash"></i></a> *@
+                </td>
+                <td>
+                    <form method="post" asp-action="Delete" asp-route-id="@item.Id" class="delete-form">
+                        <button type="submit" onclick="return confirm('Are you sure?')" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </table>
+ @*    <div class="input-container">
+        <a href="/Genre/Add" class="btn btn-sec">Back</a>
+    </div> *@
+</div>
+
+<style>
+    .tbl-container {
+        display: flex;
+        flex-direction: column;
+        /* align-items: center; */
+    }
+
+    .add-link {
+        /* margin-bottom: 10px; */
+        align-self: flex-end;
+    }
+</style>
