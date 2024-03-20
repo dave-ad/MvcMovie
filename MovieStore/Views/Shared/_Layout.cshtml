@@ -7,9 +7,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movie Store</title>
+    @* <title>Movie Store</title> *@
+    <title>@ViewData["Title"]</title>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/forms.css">
+    <link rel="icon" type="image/png" href="~/MS_Logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap" rel="stylesheet">
@@ -18,10 +20,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
+    @await Html.PartialAsync("_SideBar")
+    @* <partial name="_SideNav" /> *@
+
     <nav class="nav-bar">
         <div class="logo">
-            movie store
+            <a href="/"><img src="~/img/MS_logo1.png" alt="MS Logo" height="100px" width="200px" /></a>
         </div>
+
         <ul class="nav-link">
             <li><a class="active" href="/Home/Index">Home</a></li>
             <li><a href="/Home/About">About</a></li>
