@@ -21,6 +21,8 @@ public class UserAuthentication : Controller
         if (!ModelState.IsValid)
             return View(model);
 
+        model.Role = "User"; // Set the role to "User"
+
         var result = await _userAuthenticationService.RegisterAsync(model);
         if (result.StatusCode == 1)
             return RedirectToAction("Login");
