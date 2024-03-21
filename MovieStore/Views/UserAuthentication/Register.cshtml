@@ -1,51 +1,52 @@
 ﻿@model RegistrationModel
 
-<form class="w-40" asp-action="Register" method="post">
-    <h2 class="pb-10">Register</h2>
-    <div class="input-container">
-        <label asp-for="Username" class="w-40">Username</label>
-        <input type="text" class="input" id="username" name="Username" asp-for="Username" required>
-    </div>
+<div class="page">
+    <form class="w-40 auth-form" asp-action="Register" method="post">
+        <h2 class="pb-10">Register</h2>
+        <div class="input-container">
+            <label asp-for="Username" class="w-40">Username</label>
+            <input type="text" class="input" id="username" name="Username" asp-for="Username" required>
+        </div>
 
-    <div class="input-container">
-        <label asp-for="Name" class="w-40">Full Name</label>
-        <input type="text" class="input" id="Name" name="Name" asp-for="Name" required>
-    </div>
+        <div class="input-container">
+            <label asp-for="Name" class="w-40">Full Name</label>
+            <input type="text" class="input" id="Name" name="Name" asp-for="Name" required>
+        </div>
 
-    <div class="input-container">
-        <label asp-for="Email" class="w-40">Email Address</label>
-        <input type="email" class="input" asp-for="Email" id="Email" name="Email" required>
-    </div>
+        <div class="input-container">
+            <label asp-for="Email" class="w-40">Email Address</label>
+            <input type="email" class="input" asp-for="Email" id="Email" name="Email" required>
+        </div>
 
-    <div class="input-container">
-        <label asp-for="Password" class="w-40">Password</label>
-        <input type="password" class="input" asp-for="Password" id="Password" name="Password" required>
-    </div>
+        <div class="input-container">
+            <label asp-for="Password" class="w-40">Password</label>
+            <input type="password" class="input" asp-for="Password" id="Password" name="Password" required>
+        </div>
 
-    <div class="input-container">
-        <label asp-for="ConfirmPassword" class="w-40">Confirm Password</label>
-        <input type="password" class="input" asp-for="ConfirmPassword" id="ConfirmPassword" name="ConfirmPassword" required>
-    </div>
+        <div class="input-container">
+            <label asp-for="ConfirmPassword" class="w-40">Confirm Password</label>
+            <input type="password" class="input" asp-for="ConfirmPassword" id="ConfirmPassword" name="ConfirmPassword" required>
+        </div>
 
-    <div class="input-container">
+        @*     <div class="input-container">
         <label asp-for="Role" class="w-40">Role</label>
         <select class="form-control" id="Role" name="Role" required>
-            <option value="Admin">Admin</option>
-            <option value="User">User</option>
+        <option value="Admin">Admin</option>
+        <option value="User">User</option>
         </select>
-    </div>
+        </div> *@
 
-    @if (TempData["msg"] != null)
-    {
-        <div class="alert mb-1">
-            @TempData["msg"]
+        @if (TempData["msg"] != null)
+        {
+            <div class="alert mb-1">
+                @TempData["msg"]
+            </div>
+        }
+
+        <div class="input-container authBtn">
+            <button class="btn btn-default" type="submit">Register</button>
         </div>
-    }
 
-    @* <button type="submit" class="btn btn-primary">Register</button> *@
-    <div class="input-container">
-        <button class="btn btn-default" type="submit">Register</button>
-        @* <a class="btn btn-sec" href="#">Add more</a> *@
-    </div>
-</form>
-<p>Already have an account? <a href="@Url.Action("Login", "UserAuthentication")">Login here</a></p>
+        <p>Already have an account? <a href="@Url.Action("Login", "UserAuthentication")">Login here</a></p>
+    </form>
+</div>
